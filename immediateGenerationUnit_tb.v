@@ -6,6 +6,7 @@ module immediateGenerationUnit_tb ();
 
     /* funcionando */
     initial begin
+        #10
         /* addi -> imm = 2*/
         instruction = 64'b000000000010_00000_000_00000_0010011;        
         #10
@@ -35,6 +36,18 @@ module immediateGenerationUnit_tb ();
         instruction = 64'b1111111_00000_00000_010_11110_0100011;
         #10
         $display("Imm = %d", immediate);
+
+        /* b -> imm = 8*/
+        instruction = 64'b0000000_00000_00000_000_0100_0_1100011;
+        #10
+        $display("Imm = %d", immediate);
+            
+        /* b -> imm = -8*/
+        instruction = 64'b1111111_00000_00000_000_11000_1100011;
+        #10
+        $display("Imm = %d", immediate);
+
+        $finish;
             
     end
 endmodule
