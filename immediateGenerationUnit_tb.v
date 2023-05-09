@@ -8,44 +8,44 @@ module immediateGenerationUnit_tb ();
     initial begin
         #10
         /* addi -> imm = 2*/
-        instruction = 64'b000000000010_00000_000_00000_0010011;        
+        instruction = 32'b000000000010_00000_000_00000_0010011;        
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (addi) = %d", immediate);
 
         /* addi -> imm = -2*/
-        instruction = 64'b111111111110_00000_000_00000_0010011;
+        instruction = 32'b111111111110_00000_000_00000_0010011;
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (addi) = %d", immediate);
 
-        /* lw -> imm = 2*/
-        instruction = 64'b000000000010_00000_010_00000_0000011;
+        /* lw -> imm = 4*/
+        instruction = 32'b000000000100_00000_010_00000_0000011;
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (lw) = %d", immediate);
             
-        /* lw -> imm = -2*/
-        instruction = 64'b111111111110_00000_010_00000_0000011;
+        /* lw -> imm = -4*/
+        instruction = 32'b111111111100_00000_010_00000_0000011;
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (lw) = %d", immediate);
             
-        /* sw -> imm = 4*/
-        instruction = 64'b0000000_00000_00000_010_00100_0100011;
+        /* sw -> imm = 8*/
+        instruction = 32'b0000000_00000_00000_010_01000_0100011;
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (sw) = %d", immediate);
             
-        /* sw -> imm = -2*/
-        instruction = 64'b1111111_00000_00000_010_11110_0100011;
+        /* sw -> imm = -8*/
+        instruction = 32'b1111111_00000_00000_010_11000_0100011;
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (sw) = %d", immediate);
 
-        /* b -> imm = 8*/
-        instruction = 64'b0000000_00000_00000_000_0100_0_1100011;
+        /* b -> imm = 16*/
+        instruction = 32'b0000001_00000_00000_000_0000_0_1100011;
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (b) = %d", immediate);
             
-        /* b -> imm = -8*/
-        instruction = 64'b1111111_00000_00000_000_11000_1100011;
+        /* b -> imm = -16*/
+        instruction = 32'b1111111_00000_00000_000_0000_1_1100011;
         #10
-        $display("Imm = %d", immediate);
+        $display("Imm (b) = %d", immediate);
 
         $finish;
             
