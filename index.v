@@ -16,9 +16,11 @@ module index (
     wire [31:0] instruction;
     wire [63:0] immediate;
 
-    instructionSetter instructionSetter (.clk(clk), .instruction(instruction), .immediate(immediate));
+    wire selectedFlag;
+
+    instructionSetter instructionSetter (.clk(clk), .instruction(instruction), .immediate(immediate), .selectedFlag(selectedFlag));
     datapath datapath (.clk(clk), .immediate(immediate), .readRegister1(instruction[19:15]), .readRegister2(instruction[24:20]),
                        .writeRegister(instruction[11:7]), .writeEnable_Registers(writeEnable_Registers),
                        .writeEnable_DataMemory(writeEnable_DataMemory), .muxSelect_ImmVsDataout2(muxSelect_ImmVsDataout2),
-                       .muxSelect_SumVsReadData(muxSelect_SumVsReadData), .SumOrSub(SumOrSub));
+                       .muxSelect_SumVsReadData(muxSelect_SumVsReadData), .SumOrSub(SumOrSub), .funct3(instruction[14:12]), .selectedFlag(selectedFlag));
 endmodule
