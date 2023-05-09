@@ -62,6 +62,37 @@ module InstructionMemory(input [63:0] endereco,
      Memory[34] = 8'b1000_0000;
      Memory[35] = 8'b00000001;
 
+      // imm[12|10:5] x4 x2 000 imm[4:1|11] 1100011 BEQ imm = 4
+     Memory[32] = 8'b0_1100011;
+     Memory[33] = 8'b0_000_0100;
+     Memory[34] = 8'b0100_0001;
+     Memory[35] = 8'b0000000_0;
+      // imm[12|10:5] x1 x0 001 imm[4:1|11] 1100011 BNE imm = 4
+     Memory[40] = 8'b0_1100011;
+     Memory[41] = 8'b0_001_0100;
+     Memory[42] = 8'b0001_0000;
+     Memory[43] = 8'b0000000_0; 
+      // imm[12|10:5] x1 x0 100 imm[4:1|11] 1100011 BLT imm = 4
+     Memory[48] = 8'b0_1100011;
+     Memory[49] = 8'b0_100_0100;
+     Memory[50] = 8'b0001_0000;
+     Memory[51] = 8'b0000000_0; 
+      // imm[12|10:5] x0 x1 101 imm[4:1|11] 1100011 BGE imm = 4
+     Memory[56] = 8'b0_1100011;
+     Memory[57] = 8'b1_101_0100;
+     Memory[58] = 8'b0000_0000;
+     Memory[59] = 8'b0000000_0;
+      // imm[12|10:5] x1 x0 110 imm[4:1|11] 1100011 BLTU imm = 4
+     Memory[64] = 8'b0_1100011;
+     Memory[65] = 8'b0_110_0100;
+     Memory[66] = 8'b0001_0000;
+     Memory[67] = 8'b0000000_0;
+      // imm[12|10:5] x0 x1 111 imm[4:1|11] 1100011 BGEU imm = 4
+     Memory[72] = 8'b0_1100011;
+     Memory[73] = 8'b1_111_0100;
+     Memory[74] = 8'b0000_0000;
+     Memory[75] = 8'b0000000_0;
+
    end
    
    //  assincrono
