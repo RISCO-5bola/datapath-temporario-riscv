@@ -376,6 +376,106 @@ module index_tb ();
         muxSelect_ImmVsDataout2 = 1'b0; 
         SumOrSub = 1'b0;
         
+        #10
+
+        /* AGORA, DO TIPO B */
+
+         /*
+            Condicoes iniciais para o tipo B:
+
+                Registers
+                reg0: 0
+                reg1: 8
+                reg2: 6
+                reg3: 14
+                reg4: 6
+                reg5: 11
+                reg6: 3
+                reg7: 7
+                reg8: 14
+                ...
+
+            Data memory:
+                data0: 8
+                data1: 6 
+                data2: 16
+                data3: 14
+                data4: 6
+                data5
+                ...
+        */
+        /*
+            beq x2, x4, 4
+            deve pular duas instrucoes no pc
+        */
+        writeEnable_Registers = 1'b0;
+        writeEnable_DataMemory = 1'b0;
+
+        muxSelect_SumVsReadData = 1'b0;
+        muxSelect_ImmVsDataout2 = 1'b1; 
+        SumOrSub = 1'b1;
+
+        #10
+        /*
+            bne x0, x1, 4
+            deve pular duas instrucoes no pc
+        */
+        writeEnable_Registers = 1'b0;
+        writeEnable_DataMemory = 1'b0;
+
+        muxSelect_SumVsReadData = 1'b0;
+        muxSelect_ImmVsDataout2 = 1'b1; 
+        SumOrSub = 1'b1;
+        
+        #10
+        /*
+            blt x0, x1, 4
+            deve pular duas instrucoes no pc
+        */
+        writeEnable_Registers = 1'b0;
+        writeEnable_DataMemory = 1'b0;
+
+        muxSelect_SumVsReadData = 1'b0;
+        muxSelect_ImmVsDataout2 = 1'b1; 
+        SumOrSub = 1'b0;
+        
+        #10
+        /*
+            bge x1, x0, 4
+            deve pular duas instrucoes no pc
+        */
+        writeEnable_Registers = 1'b0;
+        writeEnable_DataMemory = 1'b0;
+
+        muxSelect_SumVsReadData = 1'b0;
+        muxSelect_ImmVsDataout2 = 1'b1; 
+        SumOrSub = 1'b0;
+        
+        #10
+        /*
+            bltu x0, x1, 4
+            deve pular duas instrucoes no pc
+        */
+        writeEnable_Registers = 1'b0;
+        writeEnable_DataMemory = 1'b0;
+
+        muxSelect_SumVsReadData = 1'b0;
+        muxSelect_ImmVsDataout2 = 1'b1; 
+        SumOrSub = 1'b0;
+        
+        #10
+        /*
+            bgeu x1, x0, 4
+            deve pular duas instrucoes no pc
+        */
+        writeEnable_Registers = 1'b0;
+        writeEnable_DataMemory = 1'b0;
+
+        muxSelect_SumVsReadData = 1'b0;
+        muxSelect_ImmVsDataout2 = 1'b1; 
+        SumOrSub = 1'b0;
+        
+        
         #100
 
         
