@@ -1,4 +1,4 @@
-`include "mux_3x1_64bit.v"
+`include "mux/mux_3x1_64bit.v"
 
 module immediateGenerationUnit (instruction, immediate);
     input [31:0] instruction;

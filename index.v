@@ -1,4 +1,4 @@
-`include "datapath.v"
+`include "./Datapath/datapath.v"
 `include "instructionSetter.v"
 
 module index (
