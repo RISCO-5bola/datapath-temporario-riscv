@@ -38,12 +38,12 @@ module immediateGenerationUnit_tb ();
         $display("Imm (sw) = %d", immediate);
 
         /* b -> imm = 16*/
-        instruction = 32'b0000001_00000_00000_000_0000_0_1100011;
+        instruction = 32'b0000000_00000_00000_000_1000_0_1100011;
         #10
         $display("Imm (b) = %d", immediate);
             
         /* b -> imm = -16*/
-        instruction = 32'b1111111_00000_00000_000_0000_1_1100011;
+        instruction = 32'b1111111_00000_00000_000_1000_1_1100011;
         #10
         $display("Imm (b) = %d", immediate);
 
