@@ -7,12 +7,12 @@ sendo:
     Pi =  Ai + Bi (propagate, verifica se Ai e Bi propagam um carry)
     Ci-1 = carry anterior
 
-cada carry i é somado com os bits Ai e Bi no somador parcial de um bit (PartialFullAdder1b)
+cada carry i é somado com os bits Ai e Bi no somador parcial de um bit (PartialFullAdder1b_mod)
 */
 
 `include "PartialFullAdder1b_mod.v"
 
-module CLAAdder8b(A, B, CIN, S, COUT);
+module CLAAdder8b_mod(A, B, CIN, S, COUT);
     input [7:0] A, B;
     input CIN;
     output [7:0] S;
@@ -56,13 +56,13 @@ module CLAAdder8b(A, B, CIN, S, COUT);
     or C08 (COUT, G8, PC8);
 
     //Sequencia de Partial Full Adders, um para cada bit de A e B
-    PartialFullAdder1b U0 (.A(A[0]), .B(B[0]), .CIN(CIN), .S(S[0]), .P(P0), .G(G1));
-    PartialFullAdder1b U1 (.A(A[1]), .B(B[1]), .CIN(C1), .S(S[1]), .P(P1), .G(G2));
-    PartialFullAdder1b U2 (.A(A[2]), .B(B[2]), .CIN(C2), .S(S[2]), .P(P2), .G(G3));
-    PartialFullAdder1b U3 (.A(A[3]), .B(B[3]), .CIN(C3), .S(S[3]), .P(P3), .G(G4));
-    PartialFullAdder1b U4 (.A(A[4]), .B(B[4]), .CIN(C4), .S(S[4]), .P(P4), .G(G5));
-    PartialFullAdder1b U5 (.A(A[5]), .B(B[5]), .CIN(C5), .S(S[5]), .P(P5), .G(G6));
-    PartialFullAdder1b U6 (.A(A[6]), .B(B[6]), .CIN(C6), .S(S[6]), .P(P6), .G(G7));
-    PartialFullAdder1b U7 (.A(A[7]), .B(B[7]), .CIN(C7), .S(S[7]), .P(P7), .G(G8));
+    PartialFullAdder1b_mod U0 (.A(A[0]), .B(B[0]), .CIN(CIN), .S(S[0]), .P(P0), .G(G1));
+    PartialFullAdder1b_mod U1 (.A(A[1]), .B(B[1]), .CIN(C1), .S(S[1]), .P(P1), .G(G2));
+    PartialFullAdder1b_mod U2 (.A(A[2]), .B(B[2]), .CIN(C2), .S(S[2]), .P(P2), .G(G3));
+    PartialFullAdder1b_mod U3 (.A(A[3]), .B(B[3]), .CIN(C3), .S(S[3]), .P(P3), .G(G4));
+    PartialFullAdder1b_mod U4 (.A(A[4]), .B(B[4]), .CIN(C4), .S(S[4]), .P(P4), .G(G5));
+    PartialFullAdder1b_mod U5 (.A(A[5]), .B(B[5]), .CIN(C5), .S(S[5]), .P(P5), .G(G6));
+    PartialFullAdder1b_mod U6 (.A(A[6]), .B(B[6]), .CIN(C6), .S(S[6]), .P(P6), .G(G7));
+    PartialFullAdder1b_mod U7 (.A(A[7]), .B(B[7]), .CIN(C7), .S(S[7]), .P(P7), .G(G8));
 
 endmodule
