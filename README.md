@@ -45,7 +45,7 @@ Abaixo está o datapath dessa entrega:
 
 Atenção: o papel da Unidade de controle é feito pela testbench.
 
-## Ondas analizadas
+## Ondas analisadas
  Nos comentários do arquivo index_tb.v, são mostradas os valores esperados para os registradores após cada uma das instruções. Sendo assim, a descrição da testagem das instruções implementadas está presente no arquivo citado (index_tb.v)
 
  As instruções em binário estão no arquivo ./Memory/InstructionMemory.v e seguem o Instruction Set oficial do RISC-V.
