@@ -9,10 +9,7 @@ module registradores (
     output reg [63:0] readData1,
     output reg [63:0] readData2
 );
-    initial begin
-        $dumpfile("registers.vcd");
-        $dumpvars(0, registradores);
-    end
+
 wire [63:0] register0;
 wire [63:0] register1;
 wire [63:0] register2;
@@ -115,7 +112,7 @@ reg_parametrizado reg31(.clk(clk), .load(load31), .in_data(writeData), .out_data
 
 // como o sinal tem so 1 load, precisa ter o load para o registrador
 // especifico somente
-always @(writeRegister) begin
+always @(*) begin
     if (regWrite == 1) begin
         case (writeRegister)
 
@@ -1244,7 +1241,7 @@ always @(writeRegister) begin
     
 end
 
-always @(readRegister1, readRegister2) begin
+always @(*) begin
         case (readRegister1)
             5'b0 : readData1 = register0;
             5'h1 : readData1 = register1;

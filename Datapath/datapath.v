@@ -7,9 +7,10 @@
 `include "./Memory/memory.v"
 //`include "./ALU/Adder64b_mod.v"
 //`include "./Mux/mux_2x1_64bit.v"
-`include "./Mux/mux_2x1_64b_ImOrData2.v"//O Mux que seleciona entre immediate e o data2 para mandar para o somador de 64 bits.
-`include "./Mux/mux6x1_1b.v"
-`include "./ALU/ALU.v"
+`include "mux_2x1_64b_ImOrData2.v"//O Mux que seleciona entre immediate e o data2 para mandar para o somador de 64 bits.
+`include "mux6x1_1b.v"
+`include "mux_2x1_64bitPC.v"
+`include "ALU.v"
 
 // a implementacao se baseou no fluxo de dados do
 // proprio risc-v
@@ -58,8 +59,8 @@ module datapath (
     ALU ALU(.A(dataOut1), .B(result_selection_mux_2), .SUM_SUB(SumOrSub), .result(result_soma), .equal(flags[5]), .not_equal(flags[4]), .lesser_than(flags[3]), 
     .greater_or_equal(flags[2]), .unsigned_lesser(flags[1]), .unsigned_greater_equal(flags[0]));
     // instanciando o mux;
-    mux_2x1_64bit mux_2x1_64bit(.S(muxSelect_SumVsReadData), .A(dataWriteOnRegisterBank),
-    .B(result_soma), .X(result_selection_mux));
+    mux_2x1_64bitPC muxToPC (.S(muxSelect_SumVsReadData), .A(dataWriteOnRegisterBank),
+                                .B(result_soma), .X(result_selection_mux));
 
     // instanciando o mux2:
     mux_2x1_64b_ImOrData2 mux_2x1_64b_ImOrData2(.SelectImOrData2(muxSelect_ImmVsDataout2), .Immediate(immediate),
