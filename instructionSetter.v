@@ -23,16 +23,19 @@ module instructionSetter (instruction, clk, immediate, selectedFlag);
     assign instruction = memoryOutput;
 
     /* faz a branch */
+    /* verifica se e do tipo B */ 
     and (isBType, instruction[6], instruction[5], ~instruction[4], ~instruction[3], ~instruction[2], instruction[1], instruction[0]);
+    /* and que controla se a branch sera realizada ou nao */
     and (branch, isBType, selectedFlag);
 
     /* seleciona o que soma no somador, podendo ser branch
-       ou a proxima instrucao */
+       ou a proxima instrucao (somando +4) */
     mux_2x1_64bit muxSelectBranchOrNextInstr (.A(64'd4), .B(immediate), .S(branch), .X(resultMuxBranchOrNextInstr));
 
     PC PC(.clk(clk), .load(1'b1), .in_data(sumOutput), .out_data(instructionAddr));
     InstructionMemory InstructionMemory (.endereco(instructionAddr), .read_data(memoryOutput));
     
+    /* calcula a proxima instrucao recebendo o resultado do mux */
     Adder64b_mod adderInstructionSetter(.A(instructionAddr), .B(resultMuxBranchOrNextInstr), .SUB(1'b0), .S(sumOutput));
     immediateGenerationUnit immediateGenerationUnit(.instruction(memoryOutput), .immediate(immediate));
 endmodule
