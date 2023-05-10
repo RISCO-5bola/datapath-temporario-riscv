@@ -1,6 +1,6 @@
 //`include "./operations/and.v"
 
-`include "./ALU/Adder64b_mod.v"
+`include "Adder64b_mod.v"
 
 //`include "./operations/or.v"
 //`include "./mux_3x1_64bit_ALU.v"

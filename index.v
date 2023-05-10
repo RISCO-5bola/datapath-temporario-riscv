@@ -7,18 +7,20 @@ module index (
     input muxSelect_SumVsReadData,
     input muxSelect_ImmVsDataout2, //Sinal mandando para o mux2 selecionar entre immediate (operacao S) ou dataout2 (na operacao aritmetica)
     input SumOrSub, //Sinal mandando para o somador/subtrador. - quando 1 indica a subtracao
-    input clk
+    input clk, 
+    input reset
 );
     initial begin
         $dumpfile("wave.vcd");
         $dumpvars(0, index);
     end
+    
     wire [31:0] instruction;
     wire [63:0] immediate;
 
     wire selectedFlag;
 
-    instructionSetter instructionSetter (.clk(clk), .instruction(instruction), .immediate(immediate), .selectedFlag(selectedFlag));
+    instructionSetter instructionSetter (.clk(clk), .instruction(instruction), .immediate(immediate), .selectedFlag(selectedFlag), .reset(reset));
     datapath datapath (.clk(clk), .immediate(immediate), .readRegister1(instruction[19:15]), .readRegister2(instruction[24:20]),
                        .writeRegister(instruction[11:7]), .writeEnable_Registers(writeEnable_Registers),
                        .writeEnable_DataMemory(writeEnable_DataMemory), .muxSelect_ImmVsDataout2(muxSelect_ImmVsDataout2),

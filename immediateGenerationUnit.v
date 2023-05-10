@@ -1,5 +1,4 @@
-`include "mux/mux_3x1_64bit.v"
-
+`include "./Mux/mux_3x1_64bit.v"
 module immediateGenerationUnit (instruction, immediate);
     input [31:0] instruction;
     output [63:0] immediate;
@@ -11,11 +10,6 @@ module immediateGenerationUnit (instruction, immediate);
     wire [50:0] sign;
     wire wire1, wire2, wire3;
     wire [1:0] type;
-
-    initial begin
-        $dumpfile("wave.vcd");
-        $dumpvars(0, immediateGenerationUnit);
-    end
 
     /* Estes sao os sinais para o sinal,
         Transforma para complemento de 2 */

@@ -7,11 +7,11 @@ module index_tb ();
         serao analisados no GTKWave.
     */
     reg writeEnable_DataMemory, writeEnable_Registers,
-        muxSelect_SumVsReadData, muxSelect_ImmVsDataout2, SumOrSub, clk;
+        muxSelect_SumVsReadData, muxSelect_ImmVsDataout2, SumOrSub, clk, reset;
 
     index UUT (.writeEnable_DataMemory(writeEnable_DataMemory), .writeEnable_Registers(writeEnable_Registers),
                .muxSelect_SumVsReadData(muxSelect_SumVsReadData), .muxSelect_ImmVsDataout2(muxSelect_ImmVsDataout2),
-               .SumOrSub(SumOrSub),.clk(clk)); //instaciado devidamente para soma, sub, load e store.
+               .SumOrSub(SumOrSub),.clk(clk), .reset(reset)); //instaciado devidamente para soma, sub, load e store.
     
     /*
         Seta o clock, comecando de 0 e posteriormente
@@ -19,6 +19,7 @@ module index_tb ();
     */
     initial begin
         clk = 1'b0;
+        reset = 1'b0;
         writeEnable_Registers = 1'b0;
         writeEnable_DataMemory = 1'b0;
         muxSelect_SumVsReadData = 1'b0; //Quando 0, manda readDatamemory e quando 1, manda Soma.
@@ -52,9 +53,11 @@ module index_tb ();
                 ...
         */
     initial begin
+        #5
+        reset = 1'b1;
+        #10
         $monitor ("[%t] clk = %d, writeEnable_DataMemory = %d, writeEnable_Registers = %d, muxSelect_SumVsReadData = %d", 
                   $time, clk, writeEnable_DataMemory, writeEnable_Registers, muxSelect_SumVsReadData);
-        #5
 
         /*
             lw x1, 0(x0)
@@ -437,7 +440,7 @@ module index_tb ();
 
         muxSelect_SumVsReadData = 1'b0;
         muxSelect_ImmVsDataout2 = 1'b1; 
-        SumOrSub = 1'b0;
+        SumOrSub = 1'b1;
         
         #10
         /*
@@ -476,7 +479,7 @@ module index_tb ();
         SumOrSub = 1'b0;
         
         
-        #100
+        #20
 
         
 

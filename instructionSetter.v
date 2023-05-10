@@ -5,8 +5,8 @@
 `include "./Mux/mux_2x1_64bit.v"
 /* vide figura index.png */
 
-module instructionSetter (instruction, clk, immediate, selectedFlag);
-    input clk, selectedFlag;
+module instructionSetter (instruction, clk, immediate, selectedFlag, reset);
+    input clk, selectedFlag, reset;
 
     output [31:0] instruction;
     output [63:0] immediate;
@@ -32,7 +32,7 @@ module instructionSetter (instruction, clk, immediate, selectedFlag);
        ou a proxima instrucao (somando +4) */
     mux_2x1_64bit muxSelectBranchOrNextInstr (.A(64'd4), .B(immediate), .S(branch), .X(resultMuxBranchOrNextInstr));
 
-    PC PC(.clk(clk), .load(1'b1), .in_data(sumOutput), .out_data(instructionAddr));
+    PC PC(.clk(clk), .load(1'b1), .in_data(sumOutput), .out_data(instructionAddr), .reset(reset));
     InstructionMemory InstructionMemory (.endereco(instructionAddr), .read_data(memoryOutput));
     
     /* calcula a proxima instrucao recebendo o resultado do mux */
