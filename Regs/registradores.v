@@ -1,3 +1,4 @@
+`include "./Regs/reg_parametrizado.v"
 module registradores (
     input wire [4:0] readRegister1,
     input wire [4:0] readRegister2,

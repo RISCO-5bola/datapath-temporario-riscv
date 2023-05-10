@@ -1,6 +1,6 @@
 //`include "./operations/and.v"
 
-`include "Adder64b_mod.v"
+`include "./ALU/Adder64b_mod.v"
 
 //`include "./operations/or.v"
 //`include "./mux_3x1_64bit_ALU.v"
@@ -18,14 +18,6 @@ module ALU (
     output unsigned_lesser,
     output unsigned_greater_equal
 );
-
-    initial begin
-        $dumpfile("wave2.vcd");
-        $dumpvars(0, ALU);
-    end
-
-
-
     //wire [63:0] resAddSub;
     wire overflow;
     //wire [63:0] resAnd;
