@@ -7,22 +7,33 @@
 
  Essa entrega específica contém o circuito capaz de implementar a soma, a subtração, tanto com valores nos registradores, quanto com immediates (constantes) fornecidas. Além disso, as instruções de mundança de fluxo das instruções (BRANCH) foram implementadas. A seguir, mostramos melhor quais instruções especificas já estão funcionais no circuito. 
 
- ---> Essas implementações estão se
+ - Essas implementações estão sendo adicionadas também no nosso processador principal. Que está sendo reconstruído para permitir instruções de multiciclos. (que usam mais do que um ciclo de clock).
+ - Situação do processador: estamos ajustando o fluxo de dados do processador multiciclo RV64I (que será atualizado para RV64F). Temos a Unidade de Controle multiciclo implementada e testada para algumas instruções.
  
 ## Compilação
+ O comando para rodar é:
+ ``iverilog index.v index_tb.v -I ./ALU/ -I ./Mux/``
+ 
+ Sistema operacional usado: Linux Mint (Debian/Ubuntu).
 
 ## Instruções implementadas
 As seguintes instruções foram implementadas:
-- add: 
-- sub: subtração co
-- addi: add immediate
-- subbi: essa instrução é apenas um add com immediate negativo
-- BEQ: branch if equal
-- BNE: branch if not equal
-- BLT: branch if less than
-- BGE: branch if greater than or equal to
-- BLTU: branch if less than (unsigned)
-- BGEU: branch if greater than or equal to(unsigned)
+
+Operações básicas aritméticas:
+
+- add: adição com complemento de 2 (entre valores de dois registradores do banco de registradores)
+- sub: subtração com complemento de 2 (entre valores de dois registradores do banco de registradores)
+- addi: add immediate. (soma um valor de um registrador com uma dada constante)
+- subbi: essa instrução é apenas um addi com a constante (immediate) negativa.
+
+Operações do tipo B (de salto nas instruções):
+
+- BEQ: branch if equal (compara dois valores e pula para uma instrução específica se os valores forem iguais)
+- BNE: branch if not equal (compara dois valores e pula para uma instrução específica se forem diferentes)
+- BLT: branch if less than (compara dois valores e pula para uma instrução específica se rs1 for menor que rs2)
+- BGE: branch if greater than or equal to (compara dois valores e soma um valor ao PC, pulando para uma instrução específica se rs1 for maior ou igual do que rs2)
+- BLTU: branch if less than (unsigned) (compara dois valores unsigned e pula para uma instrução específica se rs1 for menor que rs2)
+- BGEU: branch if greater than or equal to(unsigned) (compara dois unsigned valores e pula para uma instrução específica se rs1 for maior que rs2)
 
 ## Datapath
 Abaixo está o datapath dessa entrega:
@@ -38,4 +49,4 @@ Atenção: o papel da Unidade de controle é feito pela testbench.
  Atenção: cada um dos módulos foi testado individualmente e verificado no GTKWave para que tivesse o comportamento esperando. Portanto, os outros testes estão presentes nos arquivos *_tb.v presentes espalhados nas respectivas pastas, sempre próximos do módulo testado.
  
  Abaixo, uma imagem da análise de sinais:
- ![wave]()
+ ![wave](https://raw.githubusercontent.com/RISCO-5bola/datapath-temporario-riscv/main/wave.png?token=GHSAT0AAAAAACAU3YLC2AR233ZUTEXGXT6GZC3ZQXQ)
