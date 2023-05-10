@@ -1,7 +1,7 @@
 ### Documentação do repositório temporário
 
  Esta é a implementação em Verilog do datapath da aula 12 do Grupo 3 de Sistemas digitais II.
-
+ Os arquivos 
 ## Contextualização
  Na disciplina de SDII, o nosso grupo (03) aceitou o desafio de fazer entregas paralelas em relação aos demais grupos da sala. Nas nossas entregas, iremos avançar na codificação do RISC-V de 64 bits em verilog com as extensões de ponto flutuante e implementação em FPGA.
 
@@ -19,12 +19,12 @@
 ## Instruções implementadas
 As seguintes instruções foram implementadas:
 
-Operações básicas aritméticas:
+Operações básicas aritméticas: (tipo R e I):
 
 - add: adição com complemento de 2 (entre valores de dois registradores do banco de registradores)
 - sub: subtração com complemento de 2 (entre valores de dois registradores do banco de registradores)
 - addi: add immediate. (soma um valor de um registrador com uma dada constante)
-- subbi: essa instrução é apenas um addi com a constante (immediate) negativa.
+- subi: essa instrução é apenas um addi com a constante (immediate) negativa.
 
 Operações do tipo B (de salto nas instruções):
 
