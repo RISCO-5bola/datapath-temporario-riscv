@@ -1,6 +1,6 @@
-# Caso esteja acessando através de um .zip, acesse o link https://github.com/RISCO-5bola/datapath-temporario-riscv para uma melhor experiência no repositório :)
+#### Caso esteja acessando através de um .zip, acesse o link https://github.com/RISCO-5bola/datapath-temporario-riscv para uma melhor experiência no repositório :)
 
-### Documentação do repositório temporário
+# Documentação do repositório temporário
 
  Esta é a implementação em Verilog do datapath da aula 12 do Grupo 3 de Sistemas digitais II.
  Os arquivos 
@@ -21,7 +21,7 @@
 ## Instruções implementadas
 As seguintes instruções foram implementadas:
 
-Operações básicas aritméticas: (tipo R e I):
+### Operações básicas aritméticas: (tipo R e I):
 | Instrução | Função        | Descrição                                                               |
 |-----------|---------------|-------------------------------------------------------------------------|
 | add       | add           | soma entre valores de dois registradores do banco de registradores      |
@@ -29,10 +29,7 @@ Operações básicas aritméticas: (tipo R e I):
 | addi      | add immediate | soma um valor de um registrador com uma dada constante                  |
 | subi      | sub immediate | essa instrução é apenas um addi com a constante (immediate) negativa    |
 
-Operações do tipo B (de salto nas instruções):
-
-Operações básicas aritméticas: (tipo R e I):
-
+### Operações do tipo B (de salto nas instruções):
 | Instrução | Função        | Descrição                                                               |
 |-----------|---------------|-------------------------------------------------------------------------|
 | BEQ | branch if equal | compara dois valores e pula para uma instrução específica se os valores forem iguais |
