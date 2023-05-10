@@ -1,3 +1,5 @@
+# Caso esteja acessando através de um .zip, acesse o link https://github.com/RISCO-5bola/datapath-temporario-riscv para uma melhor experiência no repositório :)
+
 ### Documentação do repositório temporário
 
  Esta é a implementação em Verilog do datapath da aula 12 do Grupo 3 de Sistemas digitais II.
@@ -20,20 +22,25 @@
 As seguintes instruções foram implementadas:
 
 Operações básicas aritméticas: (tipo R e I):
-
-- add: adição com complemento de 2 (entre valores de dois registradores do banco de registradores)
-- sub: subtração com complemento de 2 (entre valores de dois registradores do banco de registradores)
-- addi: add immediate. (soma um valor de um registrador com uma dada constante)
-- subi: essa instrução é apenas um addi com a constante (immediate) negativa.
+| Instrução | Função        | Descrição                                                               |
+|-----------|---------------|-------------------------------------------------------------------------|
+| add       | add           | soma entre valores de dois registradores do banco de registradores      |
+| sub       | sub           | subtração entre valores de dois registradores do banco de registradores |
+| addi      | add immediate | soma um valor de um registrador com uma dada constante                  |
+| subi      | sub immediate | essa instrução é apenas um addi com a constante (immediate) negativa    |
 
 Operações do tipo B (de salto nas instruções):
 
-- BEQ: branch if equal (compara dois valores e pula para uma instrução específica se os valores forem iguais)
-- BNE: branch if not equal (compara dois valores e pula para uma instrução específica se forem diferentes)
-- BLT: branch if less than (compara dois valores e pula para uma instrução específica se rs1 for menor que rs2)
-- BGE: branch if greater than or equal to (compara dois valores e soma um valor ao PC, pulando para uma instrução específica se rs1 for maior ou igual do que rs2)
-- BLTU: branch if less than (unsigned) (compara dois valores unsigned e pula para uma instrução específica se rs1 for menor que rs2)
-- BGEU: branch if greater than or equal to(unsigned) (compara dois unsigned valores e pula para uma instrução específica se rs1 for maior que rs2)
+Operações básicas aritméticas: (tipo R e I):
+
+| Instrução | Função        | Descrição                                                               |
+|-----------|---------------|-------------------------------------------------------------------------|
+| BEQ | branch if equal | compara dois valores e pula para uma instrução específica se os valores forem iguais |
+| BNE | branch if not equal | compara dois valores e pula para uma instrução específica se forem diferentes |
+| BLT | branch if less than | compara dois valores e pula para uma instrução específica se rs1 for menor que rs2 |
+| BGE | branch if greater than or equal to | compara dois valores e soma um valor ao PC, pulando para uma instrução específica se rs1 for maior ou igual do que rs2 |
+| BLTU | branch if less than (unsigned) | compara dois valores unsigned e pula para uma instrução específica se rs1 for menor que rs2 |
+| BGEU | branch if greater than or equal to(unsigned) | compara dois unsigned valores e pula para uma instrução específica se rs1 for maior que rs2 |
 
 ## Datapath
 Abaixo está o datapath dessa entrega:

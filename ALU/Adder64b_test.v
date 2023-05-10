@@ -6,7 +6,6 @@ reg SUB;
 wire signed [63:0] S;
 wire COUT;
 
-// módulo testado
 Adder64b_mod UUT (.A(A), .B(B), .SUB(SUB), .S(S), .COUT(COUT));
 
 initial begin

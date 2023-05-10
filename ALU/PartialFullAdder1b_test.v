@@ -1,14 +1,10 @@
 `timescale 1ns / 100ps
-/* Testbench para o módulo do somador parcial de 1 bit.
-Faz todas as combinações de somas possíves com números de 1 bit e verifica se a soma S, o propagate P, e o generate G, são iguais aos da saída do módulo.
-Se algum valor for diferente do esperado ("xpect"), mostra os valores na saída e aumenta a contagem do erros 
-Ao final, mostra a quantidade total de erros obtidos */
+
 module PartialFullAdder1b_TB ();
 reg A, B, CIN, correctS, correctP, correctG;
 wire S, P, G;
 integer errors, i , j;
 
-/* task que verifica se a saída do módulo é igual ao valor esperado */
 task Check; 
     input xpectS, xpectP, xpectG;
     begin 
@@ -27,14 +23,11 @@ task Check;
     end
 endtask
 
-// módulo testado
 PartialFullAdder1b UUT (.A(A), .B(B), .CIN(CIN), .S(S), .P(P), .G(G));
 
 initial begin
     errors = 0;
-    CIN = 1; //Parâmetro para teste: 0 para fazer A + B com carry in igual a 0, 1 para fazer o mesmo com carry igual a 1
-   
-    /* Laços for que passam por todas combinações possíveis de soma com números de 1bit */
+    CIN = 1; 
     for (i = 0; i < 2; i = i + 1)
         for (j = 0; j < 2; j = j + 1) begin
             A = i;
